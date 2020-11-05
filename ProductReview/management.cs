@@ -9,19 +9,16 @@ namespace ProductReview
     {
         public void getQueriedList(List<ProductDetail> prodlist)
         {
-            var retreivedData = (from prodReviews in prodlist where (prodReviews.Rating > 3) && 
-                                 ((prodReviews.ProductID == 1)|| (prodReviews.ProductID == 4)
-                                 || (prodReviews.ProductID == 9))
-                                 select prodReviews).ToList();
+            var retreivedData = (from prodReviews in prodlist group prodReviews by prodReviews.ProductID into newProd orderby newProd.Key select newProd ).ToList();
 
-            DisplayList((List<ProductDetail>)retreivedData);
+            foreach (var product in retreivedData)
+                Console.WriteLine("Product Id: {0}  Count: {1} ", product.Key,product.Count());
         }
 
         public static void DisplayList(List<ProductDetail> productDetails)
         {
 
-            foreach (var product in productDetails)
-                Console.WriteLine("{0} {1} {2} {3} {4}", product.ProductID, product.UserID, product.Rating, product.Review, product.isLike);
+            
         }
     }
 }
