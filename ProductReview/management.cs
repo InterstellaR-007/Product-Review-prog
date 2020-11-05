@@ -9,7 +9,7 @@ namespace ProductReview
     {
         public void getQueriedList(List<ProductDetail> prodlist)
         {
-            var retreivedData = (from prodReviews in prodlist select prodReviews).ToList();
+            var retreivedData = (from prodReviews in prodlist select prodReviews).Except((from prod in prodlist select prod).Take(5)).ToList();
 
             foreach (var product in retreivedData)
                 Console.WriteLine("Product Id: {0}  Review:{1} ", product.ProductID,product.Review);
