@@ -7,9 +7,13 @@ namespace ProductReview
 {
     public class management
     {
-        public void PickTop3(List<ProductDetail> prodlist)
+        public void getQueriedList(List<ProductDetail> prodlist)
         {
-            var retreivedData = (from prodReviews in prodlist orderby prodReviews.Rating descending select prodReviews).Take(3).ToList();
+            var retreivedData = (from prodReviews in prodlist where (prodReviews.Rating > 3) && 
+                                 ((prodReviews.ProductID == 1)|| (prodReviews.ProductID == 4)
+                                 || (prodReviews.ProductID == 9))
+                                 select prodReviews).ToList();
+
             DisplayList((List<ProductDetail>)retreivedData);
         }
 
