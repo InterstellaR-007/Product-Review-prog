@@ -23,6 +23,14 @@ namespace ProductReview
 
             };
 
+            DataTable productTable = new DataTable();
+            productTable.Columns.Add("ProductID");
+            productTable.Columns.Add("UserID");
+            productTable.Columns.Add("Rating");
+            productTable.Columns.Add("Review");
+            productTable.Columns.Add("isLike");
+
+
 
             management mgmgt = new management();
             mgmgt.getQueriedList(prodReviewList);
