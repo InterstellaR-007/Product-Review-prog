@@ -9,6 +9,7 @@ namespace ProductReview
     {
         public void getQueriedList(List<ProductDetail> prodlist)
         {
+            //var retreivedData = prodlist.GroupBy(x => x.ProductID).Select(x => new { ProductID = x.Key, Count = x.Count() });
             var retreivedData = (from prodReviews in prodlist group prodReviews by prodReviews.ProductID into newProd orderby newProd.Key select newProd ).ToList();
 
             foreach (var product in retreivedData)
