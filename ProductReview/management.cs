@@ -21,7 +21,7 @@ namespace ProductReview
         {
 
             foreach (var product in productDetails)
-                Console.WriteLine("{0} {1} {2} {3} {4}", product.ProductID, product.UserID, product.Rating, product.Review, product.isLike);
+                Console.WriteLine("Product ID:{0} UserID:{1} Rating:{2} Review:{3} islike:{4}", product.ProductID, product.UserID, product.Rating, product.Review, product.isLike);
         }
     }
 }
